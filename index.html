@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pushkar Ambedpelliwar — Mechanical Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDEDE6;
+    --paper-line:#D8D9CF;
+    --ink:#1B2430;
+    --ink-soft:#4A5361;
+    --blue:#2F6690;
+    --blue-dim:#B9CBD6;
+    --white:#F8F8F4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.55;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  /* grid paper texture */
+  body{
+    background-image:
+      repeating-linear-gradient(0deg, var(--paper-line) 0 1px, transparent 1px 88px),
+      repeating-linear-gradient(90deg, var(--paper-line) 0 1px, transparent 1px 88px);
+    background-attachment:fixed;
+  }
+
+  a{color:var(--blue);}
+
+  .layout{
+    display:grid;
+    grid-template-columns:260px 1fr;
+    min-height:100vh;
+  }
+  nav{
+    position:sticky;
+    top:0;
+    height:100vh;
+    padding:48px 32px;
+    border-right:1px solid var(--ink);
+    background:var(--paper);
+  }
+  nav .mark{
+    font-weight:700;
+    font-size:1.05rem;
+    letter-spacing:0.02em;
+    margin-bottom:6px;
+  }
+  nav .tag{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    margin-bottom:40px;
+  }
+  nav ul{list-style:none;padding:0;margin:0;}
+  nav li{margin-bottom:14px;}
+  nav a{
+    text-decoration:none;
+    color:var(--ink);
+    font-size:0.92rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  nav a::before{
+    content:"";
+    width:14px;
+    height:1px;
+    background:var(--ink-soft);
+    display:inline-block;
+  }
+  nav a:hover{color:var(--blue);}
+  nav .foot{
+    position:absolute;
+    bottom:40px;
+    font-size:0.72rem;
+    color:var(--ink-soft);
+  }
+
+  main{padding:0 0 120px 0;}
+  section{
+    padding:80px 64px;
+    max-width:840px;
+    border-bottom:1px solid var(--paper-line);
+  }
+  section:last-of-type{border-bottom:none;}
+
+  .spec-tag{
+    font-size:0.72rem;
+    letter-spacing:0.04em;
+    color:var(--blue);
+    margin-bottom:14px;
+    display:inline-block;
+    padding:2px 8px;
+    border:1px solid var(--blue-dim);
+    background:var(--white);
+  }
+
+  h1{
+    font-size:2.6rem;
+    line-height:1.15;
+    margin:0 0 20px 0;
+    max-width:14ch;
+  }
+  h2{
+    font-size:1.5rem;
+    margin:0 0 28px 0;
+  }
+  h3{
+    font-size:1.1rem;
+    margin:0 0 4px 0;
+  }
+  p{max-width:64ch;color:var(--ink-soft);}
+  p.lede{
+    font-size:1.15rem;
+    color:var(--ink);
+    max-width:52ch;
+  }
+
+  /* hero */
+  #hero{padding-top:64px;}
+  .stat-row{
+    display:flex;
+    gap:0;
+    margin-top:48px;
+    border-top:1px solid var(--ink);
+    border-left:1px solid var(--ink);
+    max-width:640px;
+  }
+  .stat{
+    flex:1;
+    padding:18px 20px;
+    border-right:1px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+  }
+  .stat .num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:1.6rem;
+    font-weight:600;
+    color:var(--blue);
+    display:block;
+  }
+  .stat .label{
+    font-size:0.75rem;
+    color:var(--ink-soft);
+    margin-top:4px;
+    display:block;
+  }
+
+  .blueprint-svg{margin:36px 0;}
+
+  /* experience / projects */
+  .entry{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:24px;
+    margin-bottom:44px;
+  }
+  .entry .when{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    padding-top:3px;
+  }
+  .entry .where{
+    font-size:0.85rem;
+    color:var(--blue);
+    margin-bottom:8px;
+  }
+  .entry ul{
+    margin:10px 0 0 0;
+    padding-left:18px;
+    color:var(--ink-soft);
+  }
+  .entry li{margin-bottom:6px;font-size:0.95rem;}
+
+  .callout{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    background:var(--white);
+    border:1px solid var(--blue-dim);
+    color:var(--blue);
+    padding:2px 8px;
+    margin:2px 4px 2px 0;
+  }
+
+  /* skills */
+  .skill-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px 40px;
+    margin-top:20px;
+  }
+  .skill-cat .label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    color:var(--blue);
+    margin-bottom:8px;
+    display:block;
+  }
+  .skill-cat p{margin:0;font-size:0.92rem;}
+
+  /* contact */
+  #contact p.lede{margin-bottom:32px;}
+  .contact-list{list-style:none;padding:0;margin:0;}
+  .contact-list li{
+    display:flex;
+    justify-content:space-between;
+    max-width:420px;
+    padding:12px 0;
+    border-bottom:1px solid var(--paper-line);
+    font-size:0.95rem;
+  }
+  .contact-list span.k{color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;font-size:0.78rem;}
+
+  @media (max-width:860px){
+    .layout{grid-template-columns:1fr;}
+    nav{
+      position:relative;
+      height:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:20px 24px;
+      border-right:none;
+      border-bottom:1px solid var(--ink);
+    }
+    nav .tag{display:none;}
+    nav ul{display:flex;gap:16px;}
+    nav li{margin:0;}
+    nav a::before{display:none;}
+    nav .foot{display:none;}
+    section{padding:56px 24px;}
+    .entry{grid-template-columns:1fr;gap:6px;}
+    .stat-row{flex-wrap:wrap;}
+    .stat{min-width:45%;}
+    .skill-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <nav>
+    <div class="mark">P. AMBEDPELLIWAR</div>
+    <div class="tag mono">Atlanta, GA · GT '28</div>
+    <ul>
+      <li><a href="#hero">Overview</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="foot mono">© 2026</div>
+  </nav>
+
+  <main>
+
+    <section id="hero">
+      <span class="spec-tag mono">MECHANICAL ENGINEERING · ROBOTICS &amp; AUTOMATION</span>
+      <h1>Pushkar Ambedpelliwar</h1>
+      <p class="lede">I build mechanical, electrical, and software systems end to end — and I don't trust a model until I've tested it against the real thing in front of me.</p>
+      <p>Junior at Georgia Tech studying Mechanical Engineering with a concentration in Robotics &amp; Automation. My work spans structural FEA, custom electromechanical instrumentation, and autonomous systems, always grounded in hand calculations and hardware testing, not simulation alone.</p>
+      <p><a href="Pushkar_Ambedpelliwar_Resume.pdf" target="_blank" class="mono">Download résumé (PDF) →</a></p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <span class="num mono">250+</span>
+          <span class="label">FEA simulations run on patient-specific meshes</span>
+        </div>
+        <div class="stat">
+          <span class="num mono">29x</span>
+          <span class="label">Hand-calculated safety factor, rover chassis</span>
+        </div>
+        <div class="stat">
+          <span class="num mono">10.3%</span>
+          <span class="label">Systematic sensor bias isolated via closed-loop test</span>
+        </div>
+      </div>
+
+      <svg class="blueprint-svg" width="100%" height="140" viewBox="0 0 700 140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="tick" markerWidth="6" markerHeight="6" refX="3" refY="3">
+            <line x1="0" y1="0" x2="6" y2="6" stroke="#4A5361" stroke-width="1"/>
+          </marker>
+        </defs>
+        <rect x="60" y="30" width="200" height="80" fill="none" stroke="#1B2430" stroke-width="1.5"/>
+        <line x1="60" y1="20" x2="260" y2="20" stroke="#4A5361" stroke-width="1"/>
+        <line x1="60" y1="14" x2="60" y2="26" stroke="#4A5361" stroke-width="1"/>
+        <line x1="260" y1="14" x2="260" y2="26" stroke="#4A5361" stroke-width="1"/>
+        <text x="145" y="12" font-family="IBM Plex Mono" font-size="10" fill="#4A5361">200mm</text>
+        <circle cx="330" cy="70" r="34" fill="none" stroke="#1B2430" stroke-width="1.5"/>
+        <line x1="296" y1="70" x2="364" y2="70" stroke="#2F6690" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="330" y1="36" x2="330" y2="104" stroke="#2F6690" stroke-width="1" stroke-dasharray="4 3"/>
+        <path d="M 420 90 L 440 40 L 460 95 L 480 45 L 500 90 L 520 50 L 540 90" fill="none" stroke="#2F6690" stroke-width="1.5"/>
+        <text x="420" y="115" font-family="IBM Plex Mono" font-size="10" fill="#4A5361">EMG SIGNAL</text>
+        <line x1="580" y1="30" x2="620" y2="30" stroke="#1B2430" stroke-width="1.5"/>
+        <line x1="620" y1="30" x2="620" y2="70" stroke="#1B2430" stroke-width="1.5"/>
+        <line x1="620" y1="70" x2="580" y2="90" stroke="#1B2430" stroke-width="1.5"/>
+        <circle cx="580" cy="90" r="4" fill="#2F6690"/>
+        <text x="565" y="108" font-family="IBM Plex Mono" font-size="10" fill="#4A5361">10.3% BIAS</text>
+      </svg>
+    </section>
+
+    <section id="experience">
+      <span class="spec-tag mono">EXPERIENCE</span>
+      <h2>Research &amp; industry roles</h2>
+
+      <div class="entry">
+        <div class="when mono">APR 2025 —<br>MAY 2026</div>
+        <div>
+          <h3>Undergraduate Student Researcher</h3>
+          <div class="where">GT Dong Lab · Atlanta, GA</div>
+          <ul>
+            <li>Built a MATLAB pipeline converting 3D Slicer aortic CT scans into patient-specific FEM meshes using threshold-based segmentation and automated meshing.</li>
+            <li>Ran 250+ structural FEA analyses on the generated meshes to produce training data for an ML rupture-prediction model, achieving 82% accuracy.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when mono">AUG 2025 —<br>MAY 2026</div>
+        <div>
+          <h3>Mechanical Design &amp; Manufacturing Engineer</h3>
+          <div class="where">Industry Innovation, Circular Economy Lab · Atlanta, GA</div>
+          <ul>
+            <li>Optimized a customizable PLA bottle design in SolidWorks for manufacturability, cutting material waste 8% through DFM-driven wall thickness and draft angle changes.</li>
+            <li>Managed injection molding production for 14 custom mechanical components, tuning preform geometry and tooling to hold dimensional tolerances.</li>
+            <li>Automated SolidWorks parametric updates with a MATLAB script parsing Excel into the Global Variables Library.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when mono">APR —<br>AUG 2024</div>
+        <div>
+          <h3>Student Researcher — Biomechanical Applications</h3>
+          <div class="where">CSU Prawel Lab · Fort Collins, CO</div>
+          <ul>
+            <li>Fabricated 15 patient-specific biomimetic scaffolds via 3D printing and dynamic cell seeding; simulated strain distributions under 4 kph walking loads in MATLAB.</li>
+            <li>Rendered 10 patient bone models from µCT scans in InVesalius and modified geometry in SolidWorks for surgical implantation planning.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <span class="spec-tag mono">PROJECTS</span>
+      <h2>Builds</h2>
+
+      <div class="entry">
+        <div class="when mono">MAY 2026 —<br>PRESENT</div>
+        <div>
+          <h3>Autonomous Indoor Mapping Rover</h3>
+          <div class="where"><a href="https://github.com/karna923/indoor-mapping-rover" target="_blank">github.com/karna923/indoor-mapping-rover</a></div>
+          <p style="margin:8px 0 12px 0;">Built solo, mechanical, electrical, and software, with a Gazebo world modeled from a real LiDAR scan of my apartment.</p>
+          <ul>
+            <li>Designed a 10-standoff tiered chassis in SolidWorks, validating the plywood tier design via hand-calculated beam analysis before committing to the build.</li>
+            <li>Designed a KiCAD schematic wiring servos and an ultrasonic sensor over UART into the rover's electromechanical system.</li>
+            <li>Ran a closed-loop 10-trial rotation test and failure analysis to isolate a systematic heading bias in the IMU/EKF sensor fusion pipeline, distinguishing a true fault from noise.</li>
+            <li>Corrected URDF/mesh alignment errors against the SolidWorks assembly, building a proper export and revision workflow.</li>
+          </ul>
+          <span class="callout">ROS 2</span><span class="callout">SLAM Toolbox</span><span class="callout">Gazebo</span><span class="callout">KiCAD</span><span class="callout">SolidWorks</span>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when mono">JAN —<br>JUL 2025</div>
+        <div>
+          <h3>Biorobotic System Integration</h3>
+          <p style="margin:8px 0 12px 0;">Custom instrumentation built from scratch to acquire real muscle activation data from a live hawkmoth, no off-the-shelf EMG system was built for an insect that size.</p>
+          <ul>
+            <li>Designed and soldered a custom PCB and 3D-printed a mounting harness to acquire 10ms-resolution EMG signals without disrupting flight.</li>
+            <li>Built a MATLAB bandpass filtering pipeline to isolate the muscle activation frequency band and extract clean onset timing from noisy raw signal.</li>
+          </ul>
+          <span class="callout">Autodesk Eagle</span><span class="callout">SolidWorks</span><span class="callout">MATLAB</span><span class="callout">Arduino</span>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when mono">JAN —<br>MAY 2025</div>
+        <div>
+          <h3>Robotic Arm &amp; Control System</h3>
+          <ul>
+            <li>Modeled a 6-DOF robotic arm in Fusion 360, running a polymer-vs-metal material trade study to cut link inertia and reduce peak motor torque.</li>
+            <li>Engineered a Java motor control system integrated with an Arduino haptic sensor suite for closed-loop grasp control.</li>
+          </ul>
+          <span class="callout">Fusion 360</span><span class="callout">Java</span><span class="callout">Arduino</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <span class="spec-tag mono">SKILLS</span>
+      <h2>Tools &amp; technical range</h2>
+      <div class="skill-grid">
+        <div class="skill-cat">
+          <span class="label mono">CAD / CAE</span>
+          <p>SolidWorks, Fusion 360, FEA, Hand Calculations, DFM, GD&amp;T, PCB Layout (Eagle, KiCAD)</p>
+        </div>
+        <div class="skill-cat">
+          <span class="label mono">MANUFACTURING</span>
+          <p>Injection molding, 3D printing, tolerancing, tooling, process automation</p>
+        </div>
+        <div class="skill-cat">
+          <span class="label mono">PROGRAMMING</span>
+          <p>C++, C, Python, MATLAB, Java</p>
+        </div>
+        <div class="skill-cat">
+          <span class="label mono">ROBOTICS &amp; EMBEDDED</span>
+          <p>ROS 2 Jazzy, Nav2, micro-ROS, ESP-IDF, FreeRTOS, Arduino, SLAM Toolbox, UART/SPI/I2C</p>
+        </div>
+        <div class="skill-cat">
+          <span class="label mono">TOOLS</span>
+          <p>Docker, Git, Linux (Ubuntu 24.04)</p>
+        </div>
+        <div class="skill-cat">
+          <span class="label mono">CERTIFICATIONS</span>
+          <p>Certified SolidWorks Professional (CSWP)</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <span class="spec-tag mono">CONTACT</span>
+      <h2>Let's build something that gets tested.</h2>
+      <p class="lede">Open to mechanical engineering internships in robotics, structural design, and electromechanical systems.</p>
+      <ul class="contact-list">
+        <li><span class="k mono">EMAIL</span> <a href="mailto:pushkarna923@gmail.com">pushkarna923@gmail.com</a></li>
+        <li><span class="k mono">PHONE</span> 818-405-6708</li>
+        <li><span class="k mono">LINKEDIN</span> <a href="https://linkedin.com/in/pushkara9" target="_blank">linkedin.com/in/pushkara9</a></li>
+        <li><span class="k mono">GITHUB</span> <a href="https://github.com/karna923" target="_blank">github.com/karna923</a></li>
+        <li><span class="k mono">LOCATION</span> Atlanta, GA</li>
+        <li><span class="k mono">RÉSUMÉ</span> <a href="Pushkar_Ambedpelliwar_Resume.pdf" target="_blank">Download PDF</a></li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>
