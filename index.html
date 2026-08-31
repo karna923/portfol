@@ -20,7 +20,7 @@ main>section{display:none;min-height:calc(100vh - 165px)}main>section.page-activ
 </head>
 <body>
 <div class="layout">
-<nav class="site-nav"><div class="nav-shell"><div class="mark">P. AMBEDPELLIWAR</div><ul><li><a class="active" href="#hero">Overview</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#skills">Skills</a></li><li><a href="#contact">Contact</a></li></ul></div><div class="nav-meta mono"><span class="status-dot" aria-hidden="true"></span>ATLANTA, GA · GEORGIA TECH '28</div><div class="foot mono">© 2026</div></nav>
+<nav class="site-nav"><div class="nav-shell"><div class="mark">P. AMBEDPELLIWAR</div><ul><li><a data-page="hero" href="index.html">Overview</a></li><li><a data-page="experience" href="experience.html">Experience</a></li><li><a data-page="projects" href="projects.html">Projects</a></li><li><a data-page="skills" href="skills.html">Skills</a></li><li><a data-page="contact" href="contact.html">Contact</a></li></ul></div><div class="nav-meta mono"><span class="status-dot" aria-hidden="true"></span>ATLANTA, GA · GEORGIA TECH '28</div><div class="foot mono">© 2026</div></nav>
 <main>
 <section id="hero"><span class="tagline mono">MECHANICAL ENGINEERING · ROBOTICS &amp; AUTOMATION</span><h1>Pushkar Ambedpelliwar</h1><p class="lede">I build mechanical, electrical, and software systems end to end, then test the assumptions that matter.</p><p>Junior at Georgia Tech studying Mechanical Engineering with a concentration in Robotics &amp; Automation. My work spans structural analysis, autonomous robotics, embedded electronics, manufacturing, and biomechanical instrumentation.</p><p><a href="Pushkar_Ambedpelliwar_Resume.pdf" target="_blank" class="mono">Download résumé (PDF) →</a></p><div class="stat-row"><div class="stat"><span class="num mono">250+</span><span class="label">patient-specific FEA analyses</span></div><div class="stat"><span class="num mono">29×</span><span class="label">rover chassis safety factor</span></div><div class="stat"><span class="num mono">350 mg</span><span class="label">validated moth payload budget</span></div></div></section>
 <section id="experience"><span class="tagline mono">EXPERIENCE</span><h2>Research &amp; industry roles</h2><div class="entry"><div class="when mono">APR 2025 —<br>MAY 2026</div><div><h3>Undergraduate Student Researcher</h3><div class="where">GT Dong Lab · Atlanta, GA</div><ul><li>Built a MATLAB pipeline converting 3D Slicer aortic CT scans into patient-specific FEM meshes using threshold-based segmentation and automated meshing.</li><li>Ran 250+ structural FEA analyses to produce training data for an ML rupture-prediction model.</li></ul></div></div><div class="entry"><div class="when mono">AUG 2025 —<br>MAY 2026</div><div><h3>Mechanical Design &amp; Manufacturing Engineer</h3><div class="where">Industry Innovation, Circular Economy Lab · Atlanta, GA</div><ul><li>Optimized a customizable PLA bottle design in SolidWorks for manufacturability, reducing material waste through DFM-driven geometry changes.</li><li>Managed injection molding production for 14 custom components and automated SolidWorks parametric updates with MATLAB.</li></ul></div></div><div class="entry"><div class="when mono">APR —<br>AUG 2024</div><div><h3>Student Researcher — Biomechanical Applications</h3><div class="where">CSU Prawel Lab · Fort Collins, CO</div><ul><li>Fabricated patient-specific biomimetic scaffolds and simulated strain distributions under walking loads.</li><li>Rendered patient bone models from µCT scans and modified geometry in SolidWorks for implantation planning.</li></ul></div></div></section>
@@ -43,22 +43,13 @@ function selectProject(tab){
   panels.forEach(p=>{const on=p.id===target;p.classList.toggle('active',on);p.hidden=!on;});
 }
 tabs.forEach(tab=>tab.addEventListener('click',()=>selectProject(tab)));
-const navLinks=[...document.querySelectorAll('.site-nav a[href^="#"]')];
-const observedSections=navLinks.map(link=>document.querySelector(link.getAttribute('href'))).filter(Boolean);
-const setActiveNav=id=>navLinks.forEach(link=>link.classList.toggle('active',link.getAttribute('href')===`#${id}`));
-const showPage=(id,{updateHistory=true}={})=>{
-  const page=observedSections.find(section=>section.id===id)||observedSections[0];
-  observedSections.forEach(section=>section.classList.toggle('page-active',section===page));
-  setActiveNav(page.id);
-  document.documentElement.scrollTop=0;
-  if(updateHistory)history.pushState({page:page.id},'',`#${page.id}`);
-};
-navLinks.forEach(link=>link.addEventListener('click',event=>{
-  event.preventDefault();
-  showPage(link.getAttribute('href').slice(1));
-}));
-addEventListener('popstate',()=>showPage(location.hash.slice(1)||'hero',{updateHistory:false}));
-showPage(location.hash.slice(1)||'hero',{updateHistory:false});
+const navLinks=[...document.querySelectorAll('.site-nav a[data-page]')];
+const pageSections=[...document.querySelectorAll('main>section')];
+const pageByFile={'index.html':'hero','experience.html':'experience','projects.html':'projects','skills.html':'skills','contact.html':'contact'};
+const currentFile=location.pathname.split('/').pop()||'index.html';
+const currentPage=pageByFile[currentFile]||'hero';
+pageSections.forEach(section=>section.classList.toggle('page-active',section.id===currentPage));
+navLinks.forEach(link=>link.classList.toggle('active',link.dataset.page===currentPage));
 </script>
 </body>
 </html>
