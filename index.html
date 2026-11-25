@@ -41,22 +41,35 @@ main>section{display:none;min-height:calc(100vh - 165px)}main>section.page-activ
   <span class="mono">FALL 2026 · GEORGIA TECH</span>
 </div>
 
-<h3>Physical prototype</h3>
+<h3>Final robot and scoring mechanisms</h3>
+<p>Our final chassis was wide enough to contact and displace the mermaid targets as the robot drove forward. A hinged flap held the balls in the chute until release. The chute release and solenoid-actuated heart-retrieval claw shared a limit switch. During the final run, the contact block did not depress the switch far enough to trigger either mechanism.</p>
+<div class="visual-grid">
+  <figure class="visual">
+    <a href="assets/projects/me2110/final-robot-annotated.png" target="_blank" rel="noopener"><img src="assets/projects/me2110/final-robot-annotated.png" alt="Annotated final robot CAD showing its wide chassis, drivetrain wheel, cannonball chute, hinged flap, and heart-retrieval claw" loading="lazy"></a>
+    <figcaption>Final report figure: wide-body robot and subsystem layout</figcaption>
+  </figure>
+  <figure class="visual">
+    <a href="assets/projects/me2110/cannonball-release-cad.png" target="_blank" rel="noopener"><img src="assets/projects/me2110/cannonball-release-cad.png" alt="CAD close-up of the blue cannonball chute and its green hinged release flap" loading="lazy"></a>
+    <figcaption>SolidWorks: cannonball chute and hinged release flap</figcaption>
+  </figure>
+</div>
+
+<h3>Earlier physical prototype</h3>
 <p>The bench photos show how the drivetrain fit on the chassis alongside the controller. The overhead view makes it easier to see where the printed motor mount located the gear pair.</p>
 <div class="visual-grid"><figure class="visual"><a href="assets/projects/me2110/robot-side.jpg" target="_blank" rel="noopener"><img src="assets/projects/me2110/robot-side.jpg" alt="ME2110 robot prototype on the workbench with MDF chassis, wheels, controller, and motor mount" loading="lazy"></a><figcaption>Assembled prototype: chassis, wheels, controller, and motor placement</figcaption></figure><figure class="visual"><a href="assets/projects/me2110/robot-overhead.jpg" target="_blank" rel="noopener"><img src="assets/projects/me2110/robot-overhead.jpg" alt="Overhead photo of the ME2110 robot showing motor, blue printed mount, gears, controller and wheels" loading="lazy"></a><figcaption>Overhead view: motor mount, gears, and controller layout</figcaption></figure></div>
 
 <h3>Drivetrain architecture</h3>
-<p>I designed a single-motor drivetrain with a 1:1 bevel-gear pair that turned the drive axis 90 degrees and powered both drive wheels. In SolidWorks, I laid out the motor, gear pair, axle supports, and wheels together so I could check how the parts fit on the base before printing.</p>
+<p>I designed the two-motor drivetrain. In SolidWorks, I laid out the motors, gears, axle supports, and wheels so I could check clearances and mounting locations before printing.</p>
 <div class="visual-grid"><figure class="visual"><a href="assets/projects/me2110/drivetrain-assembly.jpg" target="_blank" rel="noopener"><img src="assets/projects/me2110/drivetrain-assembly.jpg" alt="Drivetrain assembly showing motor, gear pair, shaft supports, and wheels" loading="lazy"></a><figcaption>SolidWorks: drivetrain assembly</figcaption></figure><figure class="visual"><a href="assets/projects/me2110/drive-layout.jpg" target="_blank" rel="noopener"><img src="assets/projects/me2110/drive-layout.jpg" alt="SolidWorks drive layout with motor mount and four wheels" loading="lazy"></a><figcaption>SolidWorks: Sprint 2 drive layout</figcaption></figure></div>
 
 <div class="two">
   <div>
     <h3>Pipe mechanism</h3>
-    <p>I also designed the pipe mechanism as part of the team’s mechanical work. The prototype photos and CAD views here document the drivetrain.</p>
+    <p>I also designed the pipe mechanism as part of the team’s mechanical work. The chute and release flap are shown in the mechanism close-up above.</p>
   </div>
   <div>
     <h3>Testing under load</h3>
-    <p>Prototype testing exposed insufficient drive torque under load. I evaluated changing the gear ratio to gain wheel torque at the cost of wheel speed. That test showed why the drivetrain needed to be checked on the assembled robot under representative load.</p>
+    <p>The drivetrain worked in 2 of 10 initial Sprint 1 trials. After we doubled the bevel gear tooth count, it worked in all 10 follow-up trials. The rebuilt drivetrain worked in 9 of 10 Sprint 2 trials.</p>
   </div>
 </div>
 
